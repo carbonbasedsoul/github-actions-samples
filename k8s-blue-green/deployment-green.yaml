@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-gitops-green
+  labels:
+    app: hello-gitops
+    version: green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-gitops
+      version: green
+  template:
+    metadata:
+      labels:
+        app: hello-gitops
+        version: green
+    spec:
+      containers:
+        - name: hello-gitops
+          image: hello-gitops # Will be replaced by Kustomize
+          ports:
+            - name: http
+              containerPort: 8050
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8050
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8050
+            initialDelaySeconds: 5
+            periodSeconds: 5
