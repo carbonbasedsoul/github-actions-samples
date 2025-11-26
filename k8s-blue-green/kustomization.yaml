@@ -8,4 +8,4 @@ namespace: hello-gitops
 images:
   - name: hello-gitops
     newName: carbonbasedsoul/hello-gitops
-    newTag: latest
+    newTag: 2cfd102ae4d8c186fab9aca091352da2bb5bdff7
