@@ -130,7 +130,7 @@ jobs:
 
       - name: Update manifest
         run: |
-          sed -i '' "s|newTag:.*|newTag: ${{ github.sha }}|" k8s-blue-green/kustomization.yaml
+          sed -i "s|newTag:.*|newTag: ${{ github.sha }}|" k8s-blue-green/kustomization.yaml
 
       - name: Commit changes
         run: |
